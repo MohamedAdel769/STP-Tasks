@@ -1,51 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
     <title>Sumerge - Items</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css" type="text/css">
+
+    <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Alata&family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main class="container">
-        <h1 id="title">Popular Fruit</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>name</th>
-                    <th>image</th>
-                    <th>vote count</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Mango</td>
-                    <td>
-                        <img src="https://via.placeholder.com/65/FFC800/00/?text=Mangos">
-                    </td>
-                    <td>1000</td>
-                </tr>
-                <tr>
-                    <td>Banana</td>
-                    <td>
-                        <img src="https://via.placeholder.com/65/ffe135/00/?text=Bananas">
-                    </td>
-                    <td>564</td>
-                </tr>
-                <tr>
-                    <td>Apple</td>
-                    <td>
-                        <img src="https://via.placeholder.com/65/66b447/00/?text=Apples">
-                    </td>
-                    <td>217</td>
-                </tr>
-            </tbody>
-        </table>
+    <header class="container-fluid site-header">
+        <div class="row">
+            <div id="logo" class="col-4">
+                <h1>Dashmala</h1>
+            </div>
+            <div id="navbar" class="col-8">
+                <span class="nav-link" href="#">Sign Up</span>
+                <span class="nav-link" href="#">Home</span>
+            </div>
+        </div>
+    </header>
 
-        <p id="extra-info">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. pe specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-        </p>
+    <main class="container">
+        <div class="row">
+            <div id="items-list" class="col-8">
+                <h1 id="title">Popular Fruit</h1>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>image</th>
+                        <th>vote count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Mango</td>
+                        <td>
+                            <img src="https://via.placeholder.com/65/FFC800/00/?text=Mangos">
+                        </td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td>Banana</td>
+                        <td>
+                            <img src="https://via.placeholder.com/65/ffe135/00/?text=Bananas">
+                        </td>
+                        <td>564</td>
+                    </tr>
+                    <tr>
+                        <td>Apple</td>
+                        <td>
+                            <img src="https://via.placeholder.com/65/66b447/00/?text=Apples">
+                        </td>
+                        <td>217</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p id="extra-info">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. pe specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                </p>
+            </div>
+            <div id="side-bar" class="col-4">
+                <h2>Our Sidebar</h2>
+                <ul>
+                    <li>Popular Vegetable</li>
+                    <li>Popular Recipes</li>
+                    <li>Pizza Corner</li>
+                </ul>
+            </div>
+        </div>
+
     </main>
 </body>
 </html>
