@@ -4,11 +4,50 @@
 
 body {
     text-align: center;
-    background: url('imgs/bg2.jpg');
+    background: #fff;
     font-family: 'Alata', sans-serif;
 }
 
-.container{
+/* begin header style */
+.site-header{
+    background-color: #282A35;
+}
+
+.site-header .row{
+    /*border: 3px solid red;*/
+    width: 70%;
+    height: 90px;
+    margin: auto;
+}
+
+#logo{
+    margin: auto 0;
+    color: #eee;
+}
+
+#navbar{
+    /*border: 3px solid yellow;*/
+    margin: auto 0;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #eee;
+    display: inline-block;
+    float: right;
+    font-size: 13pt;
+}
+
+.nav-link:hover{
+    color: #1abc9c;
+    cursor: pointer;
+}
+
+/* end header style */
+
+
+/* begin form style */
+.content-card{
     background-color: rgba(236, 240, 241, 0.6);
     max-width: 700px;
     min-height: 500px;
@@ -23,7 +62,6 @@ body {
     margin-bottom: 8px;
 }
 
-/* begin form style */
 #description{
     margin-top: 0;
     font-style: oblique;
@@ -72,7 +110,7 @@ body {
 
 #submit:hover{
     cursor: pointer;
-    background-color: #312A7C;
+    background-color: #282A35;
     color: white;
     font-weight: 550;
     border: none;
@@ -88,6 +126,18 @@ body {
 
 
 /* begin table style */
+#items-list{
+    margin-top: 50px;
+}
+
+#side-bar{
+    margin-top: 50px;
+    background-color: rgba(236, 240, 241, 0.6);
+    height: 260px;
+    padding: 15px 10px;
+    border-radius: 15px;
+}
+
 table{
     background-color: rgba(255, 255, 255, 0.8);
     width: 80%;
@@ -105,7 +155,7 @@ td, th{
 }
 
 th{
-    background-color: #312A7C;
+    background-color: #2f2a65;
     color: #eee;
 }
 /* end table style */
