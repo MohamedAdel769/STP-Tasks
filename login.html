@@ -1,30 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
     <title>Sumerge - Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css" type="text/css">
+
+    <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Alata&family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-<main class="container">
-    <h1 id="title">Log In</h1>
-    <p id="description">Welcome to <a href="https://www.sumerge.com/" target="_blank">sumerge</a> </p>
-    <form id="login-form" action="#">
-        <label for="name" class="form-field">Username</label>
-        <input type="text" id="name" class="form-field" required>
 
-        <label for="password" class="form-field">Password</label>
-        <input type="password" id="password" class="form-field" required>
+<header class="container-fluid site-header">
+    <div class="row">
+        <div id="logo" class="col-4">
+            <h1>Dashmala</h1>
+        </div>
+        <div id="navbar" class="col-8">
+            <span class="nav-link" href="#">Sign Up</span>
+            <span class="nav-link" href="#">About</span>
+            <span class="nav-link" href="#">Home</span>
+        </div>
+    </div>
+</header>
 
-        <button id="submit" type="submit" class="form-field">
-            Submit
-        </button>
-    </form>
-    <p id="extra-info">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. pe specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-    </p>
+<main class="container content-card">
+    <div class="row">
+        <div class="col">
+            <h1 id="title">Sign In</h1>
+            <p id="description">Welcome to <a href="https://www.sumerge.com/" target="_blank">sumerge</a> </p>
+            <form id="login-form" action="#">
+                <label for="name" class="form-field">Username</label>
+                <input type="text" id="name" class="form-field" required>
+
+                <label for="password" class="form-field">Password</label>
+                <input type="password" id="password" class="form-field" required>
+
+                <button id="submit" type="submit" class="form-field">
+                    Login
+                </button>
+            </form>
+            <p id="extra-info">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. pe specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            </p>
+        </div>
+    </div>
 </main>
+
 </body>
 </html>

@@ -4,11 +4,45 @@
 
 body {
     text-align: center;
-    background: url('imgs/bg2.jpg');
+    background: #fff;
     font-family: 'Alata', sans-serif;
 }
 
-.container{
+.site-header{
+    background-color: #282A35;
+}
+
+.site-header .row{
+    /*border: 3px solid red;*/
+    width: 70%;
+    height: 90px;
+    margin: auto;
+}
+
+#logo{
+    margin: auto 0;
+    color: #eee;
+}
+
+#navbar{
+    /*border: 3px solid yellow;*/
+    margin: auto 0;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #eee;
+    display: inline-block;
+    float: right;
+    font-size: 13pt;
+}
+
+.nav-link:hover{
+    color: #1abc9c;
+    cursor: pointer;
+}
+
+.content-card{
     background-color: rgba(236, 240, 241, 0.6);
     max-width: 700px;
     min-height: 500px;
@@ -72,7 +106,7 @@ body {
 
 #submit:hover{
     cursor: pointer;
-    background-color: #312A7C;
+    background-color: #282A35;
     color: white;
     font-weight: 550;
     border: none;
