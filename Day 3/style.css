@@ -1,14 +1,18 @@
 html, body{
     background-color: #e3e3e3;
+    box-sizing: border-box;
 }
 
 img{
     width: 64px;
+    position: absolute;
 }
 
 .panel{
     width: 50%;
     height: 92vh;
+    padding: 10px;
+    position: relative;
 }
 
 #left-panel{
