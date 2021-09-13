@@ -9,7 +9,7 @@ img{
 }
 
 .panel{
-    width: 50%;
+    /*width: 50%;*/
     height: 92vh;
     padding: 10px;
     position: relative;

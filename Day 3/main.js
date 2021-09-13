@@ -1,53 +1,82 @@
+function getResult(){
+    //console.log(this);
+    if(this.id === "target"){
+        // TODO: start new level
+        alert("GG EZZZZZZ!");
+    }
+    else{
+        // TODO: restart current level
+        alert("NOPE -_-");
+    }
+}
+
 function genSmile(){
-    var newSmile = document.createElement("IMG");
+    var new_smile = document.createElement("IMG");
     var min = 10;
 
     // get panel width and height, then subtract from it (padding + img size) to prevent overflow outside panel.
-    var maxWidth = document.getElementById("left-panel").clientWidth - 80;
-    var maxHeight = document.getElementById("left-panel").clientHeight - 80;
+    var max_width = document.getElementById("left-panel").clientWidth - 80;
+    var max_height = document.getElementById("left-panel").clientHeight - 80;
 
     // generate random position for the img between 10 and maxWidth/Height.
-    newSmile.src = 'smile.png';
-    newSmile.style.top = Math.floor(Math.random() * (maxHeight - min + 1) + min) + "px";
-    newSmile.style.left = Math.floor(Math.random() * (maxWidth - min + 1) + min) + "px";
+    new_smile.src = "smile.png";
+    new_smile.style.top = Math.floor(Math.random() * (max_height - min + 1) + min) + "px";
+    new_smile.style.left = Math.floor(Math.random() * (max_width - min + 1) + min) + "px";
+    new_smile.addEventListener("click", getResult);
 
-    return newSmile;
+    return new_smile;
 }
 
-function fillPanel(facesNumber){
+function removeAllChildNodes(parent) {
+    while (parent.lastElementChild) {
+        parent.removeChild(parent.lastElementChild);
+    }
+}
+
+function fillPanel(faces_number){
     // TODO: Handle duplicates
 
-    var newFaces = [];
-    //var frag = document.createDocumentFragment();
+    let right_panel = document.getElementById("right-panel");
+    let left_panel = document.getElementById("left-panel");
+    const cloned_faces = [];
 
-    for(let i=0;i<facesNumber;i++){
-        newFaces.push(genSmile());
-        //frag.appendChild(newFaces[i]);
+    //clear prev faces on the panels.
+    //removeAllChildNodes(right_panel);
+    //removeAllChildNodes(left_panel);
+
+    for(let i=0;i<faces_number;i++){
+        let new_smile = genSmile();
+        let clone_smile = new_smile.cloneNode();
+        clone_smile.addEventListener("click", getResult);
+
+        cloned_faces.push(clone_smile);
+        right_panel.appendChild(new_smile);
     }
 
-    var leftPanel = document.getElementById("left-panel");
-    var rightPanel = document.getElementById("right-panel");
-
-    //console.log(document.getElementById("right-panel").childElementCount);
-
-    for(let i=0;i<newFaces.length;i++){
-        rightPanel.appendChild(newFaces[i]);
+    for(let i=0;i<faces_number;i++){
+        left_panel.appendChild(cloned_faces[i]);
     }
+}
 
-    //console.log(document.getElementById("right-panel").childElementCount);
+function addTarget(){
+    let chosen_panel = Math.floor(Math.random() * 2);
 
-    // for(let i=0;i<newFaces.length;i++){
-    //     console.log(newFaces[i]);
-    // }
+    let target_smile = genSmile();
+    target_smile.id = "target";
 
-    for(let i=0;i<newFaces.length;i++){
-        leftPanel.appendChild(newFaces[i]);
-    }
-
-    //console.log(document.getElementById("right-panel").childElementCount);
+    if(chosen_panel === 0)
+        document.getElementById("left-panel").appendChild(target_smile);
+    else
+        document.getElementById("right-panel").appendChild(target_smile);
 }
 
 window.addEventListener("load", function(){
-    fillPanel(4);
+    // TODO: window resize --> reGenerate faces in curr lvl
+    var curr_faces = 4;
+    var lvl_diff = 3;
+    var curr_lvl = 1;
+
+    fillPanel(curr_faces);
+    addTarget();
 });
 
