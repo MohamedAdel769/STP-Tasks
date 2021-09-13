@@ -84,6 +84,8 @@ function mainLoop(game_mod, lvl_up){
         }
         game_mod.curr_faces += game_mod.lvl_diff;
         game_mod.curr_lvl++;
+
+        document.getElementById("curr-lvl").innerText = game_mod.curr_lvl;
     }
 
     fillPanel(game_mod.curr_faces);
