@@ -1,13 +1,20 @@
+var game_mod = {
+    curr_faces: 4,
+    lvl_diff: 2,
+    curr_lvl: 1
+};
+
 function getResult(){
     //console.log(this);
+    let lvl_up = false;
     if(this.id === "target"){
-        // TODO: start new level
         alert("GG EZZZZZZ!");
+       lvl_up = true;
     }
     else{
-        // TODO: restart current level
         alert("NOPE -_-");
     }
+    mainLoop(game_mod, lvl_up);
 }
 
 function genSmile(){
@@ -41,8 +48,8 @@ function fillPanel(faces_number){
     const cloned_faces = [];
 
     //clear prev faces on the panels.
-    //removeAllChildNodes(right_panel);
-    //removeAllChildNodes(left_panel);
+    removeAllChildNodes(right_panel);
+    removeAllChildNodes(left_panel);
 
     for(let i=0;i<faces_number;i++){
         let new_smile = genSmile();
@@ -70,13 +77,23 @@ function addTarget(){
         document.getElementById("right-panel").appendChild(target_smile);
 }
 
+function mainLoop(game_mod, lvl_up){
+    if(lvl_up){
+        if(game_mod.curr_lvl % 5 === 0){
+            game_mod.lvl_diff += 2;
+        }
+        game_mod.curr_faces += game_mod.lvl_diff;
+        game_mod.curr_lvl++;
+
+        document.getElementById("curr-lvl").innerText = game_mod.curr_lvl;
+    }
+
+    fillPanel(game_mod.curr_faces);
+    addTarget();
+}
+
 window.addEventListener("load", function(){
     // TODO: window resize --> reGenerate faces in curr lvl
-    var curr_faces = 4;
-    var lvl_diff = 3;
-    var curr_lvl = 1;
-
-    fillPanel(curr_faces);
-    addTarget();
+    mainLoop(game_mod, false);
 });
 

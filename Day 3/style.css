@@ -10,7 +10,7 @@ img{
 
 .panel{
     /*width: 50%;*/
-    height: 92vh;
+    height: 86vh;
     padding: 10px;
     position: relative;
 }
@@ -23,10 +23,19 @@ img{
     border-left: 2px dashed black;
 }
 
+header{
+    text-align: center;
+    padding: 10px 5px;
+    height: 8vh;
+    background-color: #222;
+    color: white;
+    font-weight: bold;
+}
+
 footer{
     border: 2px solid #222;
     text-align: center;
     text-decoration: none;
-    padding: 10px 5px;
-    height: 8vh;
+    padding: 4px;
+    height: 6vh;
 }
