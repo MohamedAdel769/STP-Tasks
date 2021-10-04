@@ -1,9 +1,16 @@
 package com.sumerge;
 
+import javax.validation.constraints.*;
+
 public class Patient {
+    @Size(min = 10, max = 100, message="Name must be between 10 and 100 characters")
     private String name;
+    @Email(message = "Email should be valid")
     private String email;
+    @Pattern(regexp = "\\d+(\\s\\w+)+", message = "Address should contain street number followed by st. name")
     private String address;
+    @Positive(message = "Age should be positive number")
+    @Max(value = 150, message = "Age should be 150 maximum")
     private int age;
 
     public Patient(String name, String email, String address, int age){
