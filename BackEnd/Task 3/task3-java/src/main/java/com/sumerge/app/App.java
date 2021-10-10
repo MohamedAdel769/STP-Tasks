@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 /**
  * Hello world!
@@ -11,7 +14,7 @@ import java.util.Map;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main(String[] args )
     {
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee("SE", "SAM", "XXXXXX"));
@@ -22,31 +25,16 @@ public class App
     }
 
     public static void filter(List<Employee> employees) {
-        Map<String, List<Employee>> groups = new HashMap<>();
+        Map<String, List<Employee>> groups = employees.stream().collect(groupingBy(Employee::getTitle));
 
-        employees.forEach(employee -> {
-            String title = employee.getTitle();
-
-            if(groups.containsKey(title)){
-                groups.get(title).add(employee);
-            }
-            else {
-                List<Employee> newGroup = new ArrayList<>();
-                newGroup.add(employee);
-                groups.put(title, newGroup);
-            }
-        });
-
-        for (String title : groups.keySet()) {
-            int count = groups.get(title).size();
-            String titleOutput = count < 2 ? "*Special Title* " : "Title: ";
-            System.out.println(titleOutput + title + " Count: " + count);
-
-            for(Employee employee: groups.get(title)){
-                System.out.println("Name: " + employee.getName() + " - Mobile: " + employee.getMobile());
-            }
-
-            System.out.println();
-        }
+        groups.entrySet().stream()
+                .map(entry -> {
+                    int count = entry.getValue().size();
+                    String titleOutput = count < 2 ? "*Special Title* " : "Title: ";
+                    System.out.println(titleOutput + entry.getKey() + " Count: " + count);
+                    return entry.getValue();
+                }).forEach(group -> {
+                    group.forEach(System.out::println);
+                });
     }
 }

@@ -34,4 +34,12 @@ public class Employee {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", mobile='" + mobile + '\'' +
+                '}';
+    }
 }
