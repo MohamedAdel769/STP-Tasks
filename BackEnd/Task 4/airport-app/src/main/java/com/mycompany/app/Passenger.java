@@ -1,11 +1,11 @@
 package com.mycompany.app;
 
-interface Details{
-    void showDetails();
-}
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Passenger {
-
     private String id;
     private String name;
     private String lastVisited;
@@ -13,17 +13,19 @@ public class Passenger {
     private boolean hasCough;
     private String pcrStatus;
 
-    Passenger(String id, String name, String lastVisited, boolean hasFever, boolean hasCough, String status){
+    Passenger(String id,
+              String name,
+              String lastVisited,
+              boolean hasFever,
+              boolean hasCough,
+              String status)
+    {
         this.id = id;
         this.name = name;
         this.lastVisited = lastVisited;
         this.hasCough = hasCough;
         this.hasFever = hasFever;
         this.pcrStatus = status;
-    }
-
-    public void requestDetails(Details detailsRequest){
-        detailsRequest.showDetails();
     }
 
     public String getId() {
@@ -73,33 +75,14 @@ public class Passenger {
     public void setPcrStatus(String pcrStatus) {
         this.pcrStatus = pcrStatus;
     }
-}
-
-class SpecialPassenger extends Passenger{
-    //TODO: improve data types
-    private String condition;
-    private String allergy;
-
-    SpecialPassenger(String id, String name, String lastVisited, boolean hasFever, boolean hasCough, String status,
-                     String condition, String allergy) {
-        super(id, name, lastVisited, hasFever, hasCough, status);
-        this.condition = condition;
-        this.allergy = allergy;
-    }
 
     public String getCondition() {
-        return condition;
+        return "No conditions";
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public String getAllergy() {
-        return allergy;
-    }
-
-    public void setAllergy(String allergy) {
-        this.allergy = allergy;
+    public List<String> getAllergies() {
+        return Collections.singletonList("No allergies");
     }
 }
+
+
