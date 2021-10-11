@@ -8,8 +8,7 @@ import java.util.List;
 @Table(name = "roles")
 public class Role {
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "roles_ID")
     private int id;
 
     @Column(name = "role_name", nullable = false, length = 100)
@@ -18,9 +17,6 @@ public class Role {
     @Column(name = "department", nullable = false, length = 50)
     private String department;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    private List<Employee> employees = new ArrayList<>();
-
     public Role() {
     }
 
@@ -28,7 +24,6 @@ public class Role {
         this.id = id;
         this.roleName = roleName;
         this.department = department;
-        this.employees = employees;
     }
 
     @Override
@@ -38,14 +33,6 @@ public class Role {
                 ", roleName='" + roleName + '\'' +
                 ", department='" + department + '\'' +
                 '}';
-    }
-
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
     }
 
     public int getId() {

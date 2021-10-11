@@ -1,7 +1,5 @@
 package entities;
 
-import org.graalvm.compiler.lir.alloc.lsra.LinearScan;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +8,7 @@ import java.util.List;
 @Table(name = "employees")
 public class Employee {
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "emp_ID")
     private int id;
 
     @Column(name = "full_name", nullable = false, length = 50)
@@ -30,16 +27,16 @@ public class Employee {
     private String nationalID;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID")
+    @JoinColumn(name = "role_ID")
     private Role role;
-
-    @OneToMany(mappedBy = "employee")
-    private List<Project> managedProjects = new ArrayList<>();
 
     public Employee() {
     }
 
-    public Employee(int id, String fullName, String email, String phone, short age, String nationalID, Role role, List<Project> managedProjects) {
+    public Employee(int id, String fullName,
+                    String email, String phone,
+                    short age, String nationalID,
+                    Role role) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
@@ -47,7 +44,6 @@ public class Employee {
         this.age = age;
         this.nationalID = nationalID;
         this.role = role;
-        this.managedProjects = managedProjects;
     }
 
     @Override
@@ -60,13 +56,13 @@ public class Employee {
                 ", role=" + role + '}';
     }
 
-    public List<Project> getManagedProjects() {
-        return managedProjects;
-    }
+//    public List<Project> getManagedProjects() {
+//        return managedProjects;
+//    }
 
-    public void setManagedProjects(List<Project> managedProjects) {
-        this.managedProjects = managedProjects;
-    }
+//    public void setManagedProjects(List<Project> managedProjects) {
+//        this.managedProjects = managedProjects;
+//    }
 
     public Role getRole() {
         return role;

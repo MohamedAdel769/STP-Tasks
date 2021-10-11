@@ -1,14 +1,13 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "projects")
 public class Project {
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "proj_ID")
     private int id;
 
     @Column(name = "project_name", nullable = false, unique = true, length = 50)
@@ -17,9 +16,33 @@ public class Project {
     @Column(name = "start_date", nullable = false)
     private Date startDate;
 
-    @ManyToOne()
-    @JoinColumn(name = "ID")
+    @ManyToOne
+    @JoinColumn(name = "emp_ID")
     private Employee projectManager;
+
+    @ManyToMany
+    @JoinTable(
+            name = "project_employee",
+            joinColumns = {
+                    @JoinColumn(name = "project_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "employee_id")
+            }
+    )
+    private List<Employee> employees = new ArrayList<>();
+
+    public Employee getProjectManager() {
+        return projectManager;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     public Project() {
     }
