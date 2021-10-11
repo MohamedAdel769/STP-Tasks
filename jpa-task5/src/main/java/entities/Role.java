@@ -21,6 +21,25 @@ public class Role {
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private List<Employee> employees = new ArrayList<>();
 
+    public Role() {
+    }
+
+    public Role(int id, String roleName, String department, List<Employee> employees) {
+        this.id = id;
+        this.roleName = roleName;
+        this.department = department;
+        this.employees = employees;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                ", department='" + department + '\'' +
+                '}';
+    }
+
     public List<Employee> getEmployees() {
         return employees;
     }

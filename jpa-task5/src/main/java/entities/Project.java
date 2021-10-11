@@ -21,6 +21,26 @@ public class Project {
     @JoinColumn(name = "ID")
     private Employee projectManager;
 
+    public Project() {
+    }
+
+    public Project(int id, String projectName, Date startDate, Employee projectManager) {
+        this.id = id;
+        this.projectName = projectName;
+        this.startDate = startDate;
+        this.projectManager = projectManager;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", projectName='" + projectName + '\'' +
+                ", startDate=" + startDate +
+                ", projectManager=" + projectManager +
+                '}';
+    }
+
     public void setProjectManager(Employee projectManager) {
         this.projectManager = projectManager;
     }

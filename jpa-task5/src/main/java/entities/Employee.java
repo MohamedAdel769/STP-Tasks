@@ -36,6 +36,30 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private List<Project> managedProjects = new ArrayList<>();
 
+    public Employee() {
+    }
+
+    public Employee(int id, String fullName, String email, String phone, short age, String nationalID, Role role, List<Project> managedProjects) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.age = age;
+        this.nationalID = nationalID;
+        this.role = role;
+        this.managedProjects = managedProjects;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", role=" + role + '}';
+    }
+
     public List<Project> getManagedProjects() {
         return managedProjects;
     }
