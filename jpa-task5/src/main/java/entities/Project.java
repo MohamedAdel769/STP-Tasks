@@ -30,17 +30,17 @@ public class Project {
                     @JoinColumn(name = "employee_id")
             }
     )
-    private List<Employee> employees = new ArrayList<>();
+    private Set<Employee> employees = new HashSet<>();
 
     public Employee getProjectManager() {
         return projectManager;
     }
 
-    public List<Employee> getEmployees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
 

@@ -2,7 +2,9 @@ package entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "employees")
@@ -29,6 +31,17 @@ public class Employee {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_ID")
     private Role role;
+
+    @ManyToMany
+    private Set<Project> projectSet = new HashSet<>();
+
+    public Set<Project> getProjectSet() {
+        return projectSet;
+    }
+
+    public void setProjectSet(Set<Project> projectSet) {
+        this.projectSet = projectSet;
+    }
 
     public Employee() {
     }

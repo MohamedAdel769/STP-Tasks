@@ -10,6 +10,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Hello world!
@@ -27,17 +28,26 @@ public class App
         employees.forEach(System.out::println);
 
         System.out.println("\n\nb.Query to display all employees within a specific project (referenced by project name)\n");
-        employees = employeeRepository.getEmployeesByProject("ABC");
-        employees.forEach(System.out::println);
+        Set<Employee> projectEmployees = employeeRepository.getEmployeesByProject("ABC");
+        projectEmployees.forEach(System.out::println);
 
         // add new employee
-        /*Employee newEmp = new Employee(100, "new Employee", "new@gmail.com",
-                "1234567899", (short) 22, "12345678911234", new Role(101, "associate",
-                "SE", new ArrayList<>()));
-        employeeRepository.insertEmployee(newEmp);
+        /*Employee newEmp = new Employee(4004, "Layla", "layla@gmail.com",
+                "1234569999", (short) 32, "12345688222222", employeeRepository.getRole(404));
+        employeeRepository.insertEmployee(newEmp);*/
 
         System.out.println("\n\nc.Query to add an employee to a certain project\n");
-        employeeRepository.addEmployeetoProject(newEmp, "Dashmala");*/
+        employeeRepository.addEmployeetoProject(employeeRepository.getEmployee(100), "ABC");
+
+        // Make sure that the employee added successfully.
+        projectEmployees = employeeRepository.getEmployeesByProject("ABC");
+        projectEmployees.forEach(System.out::println);
+
+
+        System.out.println("\n\nBonus. Create a query that displays employees with a certain role who are currently not working on a project\n");
+        Role role = employeeRepository.getRole(404);
+        List<Employee> idleEmployees = employeeRepository.getIdleEmployees(role);
+        idleEmployees.forEach(System.out::println);
 
         employeeRepository.close();
     }
