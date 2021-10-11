@@ -1,0 +1,4 @@
+entities\Role.class
+org\example\App.class
+entities\Employee.class
+entities\Project.class
