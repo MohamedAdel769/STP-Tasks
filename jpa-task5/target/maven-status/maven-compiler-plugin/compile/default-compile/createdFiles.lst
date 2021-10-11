@@ -1,0 +1,5 @@
+entities\Role.class
+org\example\App.class
+org\example\repository\EmployeeRepository.class
+entities\Employee.class
+entities\Project.class
