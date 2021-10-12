@@ -1,6 +1,5 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
-    <persistence-unit name="entities.Employee">
-        <class>entities.Employee</class>
+    <persistence-unit name="org.example.entities">
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

@@ -1,9 +1,10 @@
 package org.example;
 
-import entities.Employee;
-import entities.Role;
-import org.example.repository.EmployeeRepository;
+import org.example.entities.Employee;
+import org.example.entities.Role;
+import org.example.repositories.EmployeeRepository;
 
+import javax.ws.rs.ApplicationPath;
 import java.util.List;
 import java.util.Set;
 
@@ -11,6 +12,7 @@ import java.util.Set;
  * Hello world!
  *
  */
+@ApplicationPath("company")
 public class App 
 {
     public static void main( String[] args )

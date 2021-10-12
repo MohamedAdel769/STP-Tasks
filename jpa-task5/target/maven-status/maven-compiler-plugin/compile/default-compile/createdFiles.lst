@@ -1,5 +1,6 @@
-entities\Role.class
+org\example\entities\Project.class
+org\example\repositories\EmployeeRepository.class
+org\example\entities\Employee.class
+org\example\entities\Role.class
 org\example\App.class
-org\example\repository\EmployeeRepository.class
-entities\Employee.class
-entities\Project.class
+org\example\controllers\EmployeeController.class
