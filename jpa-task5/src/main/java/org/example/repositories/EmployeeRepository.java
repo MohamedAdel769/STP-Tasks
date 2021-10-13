@@ -13,12 +13,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class EmployeeRepository {
-    private final EntityManagerFactory emf;
-    private final EntityManager entityManager;
+    private EntityManagerFactory emf;
+    private EntityManager entityManager;
 
     public EmployeeRepository(){
-        this.emf = Persistence.createEntityManagerFactory("org.example.entities");
-        this.entityManager = this.emf.createEntityManager();
+        emf = Persistence.createEntityManagerFactory("org.example.entities");
+        entityManager = emf.createEntityManager();
     }
 
     public Employee findByID(int id){
@@ -74,7 +74,7 @@ public class EmployeeRepository {
     }
 
     public void close(){
-        this.entityManager.close();
-        this.emf.close();
+        entityManager.close();
+        emf.close();
     }
 }

@@ -49,24 +49,27 @@
       <version>2.13.0</version>
     </dependency>
     <dependency>
-      <groupId>org.glassfish.jersey.containers</groupId>
-      <artifactId>jersey-container-servlet</artifactId>
-      <version>2.10</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jersey.core</groupId>
-      <artifactId>jersey-server</artifactId>
-      <version>2.10</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jersey.core</groupId>
-      <artifactId>jersey-client</artifactId>
-      <version>2.10</version>
-    </dependency>
-    <dependency>
       <groupId>org.apache.maven.archetypes</groupId>
       <artifactId>maven-archetype-webapp</artifactId>
       <version>1.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jaxrs</artifactId>
+      <version>3.0.10.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-servlet-initializer</artifactId>
+      <version>3.0.10.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-client</artifactId>
+      <version>3.0.10.Final</version>
     </dependency>
 
   </dependencies>
@@ -125,14 +128,35 @@
           <target>8</target>
         </configuration>
       </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-war-plugin</artifactId>-->
+<!--        <configuration>-->
+<!--          <webXml>src\main\resources\WEB-INF\web.xml</webXml>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <configuration>
-          <webXml>src\main\resources\WEB-INF\web.xml</webXml>
-        </configuration>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.19.v20190610</version>
       </plugin>
-
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-maven-plugin</artifactId>
+        <version>2.0.2.Final</version>
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>install</phase>-->
+<!--            <goals>-->
+<!--              <goal>deploy-artifact</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <groupId>mysql</groupId>-->
+<!--              <artifactId>mysql-connector-java</artifactId>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+      </plugin>
     </plugins>
   </build>
 </project>

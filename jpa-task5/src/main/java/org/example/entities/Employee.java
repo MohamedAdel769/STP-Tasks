@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity()
 @Table(name = "employees")
 public class Employee {
     @Id
