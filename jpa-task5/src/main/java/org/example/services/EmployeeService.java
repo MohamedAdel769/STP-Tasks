@@ -18,6 +18,18 @@ public class EmployeeService{
         return entityManager.createQuery("SELECT e FROM Employee e", Employee.class).getResultList();
     }
 
+    public List<Employee> selectAllPage(int page, int limit){
+        int offset = (page-1) * limit;
+        EntityManager entityManager = getEntityManager();
+
+        List<Employee> employees = entityManager.createQuery("SELECT e FROM Employee e", Employee.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+
+        return employees;
+    }
+
     public EntityManager getEntityManager(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("org.example.entities");
         return emf.createEntityManager();

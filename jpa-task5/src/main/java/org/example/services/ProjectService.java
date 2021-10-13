@@ -23,25 +23,16 @@ public class ProjectService {
         return project.getEmployees();
     }
 
-    public Project addEmployeeToProject(int employeeID, int projectID){
-        Project project = findByID(projectID);
-        EmployeeService employeeService = new EmployeeService();
-        Employee employee = employeeService.findByID(employeeID);
-        project.addEmployee(employee);
-        save(project);
-        return project;
-    }
-
-    public Project findByID(int id){
-        EntityManager entityManager = getEntityManager();
-        return entityManager.find(Project.class, id);
-    }
-
-    public void save(Project project){
+    public Project addEmployeeToProject(Employee employee, int projectID){
         EntityManager entityManager = getEntityManager();
         entityManager.getTransaction().begin();
+
+        Project project = entityManager.find(Project.class, projectID);
+        project.addEmployee(employee);
+
         entityManager.persist(project);
         entityManager.getTransaction().commit();
+        return project;
     }
 
     public EntityManager getEntityManager(){

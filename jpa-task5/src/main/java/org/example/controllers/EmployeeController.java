@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import org.example.dto.Page;
 import org.example.entities.Employee;
 import org.example.entities.Project;
 import org.example.services.EmployeeService;
@@ -14,6 +15,15 @@ import java.util.List;
 public class EmployeeController {
     private final EmployeeService employeeService = new EmployeeService();
     private final ProjectService projectService = new ProjectService();
+
+    @POST
+    @Path("/page")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response paginate(Page page){
+        List<Employee> employees = employeeService.selectAllPage(page.getPageIndex(), page.getPageSize());
+        return Response.ok(employees).build();
+    }
 
     @GET
     @Path("/hello")
@@ -42,7 +52,8 @@ public class EmployeeController {
             @PathParam("projectID") int projectID,
             @PathParam("employeeID") int employeeID
     ){
-        return Response.ok(projectService.addEmployeeToProject(employeeID, projectID)
+        Employee employee = employeeService.findByID(employeeID);
+        return Response.ok(projectService.addEmployeeToProject(employee, projectID)
                 .getEmployees()).build();
     }
 }
