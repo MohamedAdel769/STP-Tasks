@@ -26,11 +26,10 @@ public class ProjectRepository {
         return entityManager.find(Project.class, id);
     }
 
-    public Project save(Project project){
+    public void save(Project project){
         entityManager.getTransaction().begin();
         entityManager.persist(project);
         entityManager.getTransaction().commit();
-        return project;
     }
 
     public void close(){

@@ -7,46 +7,55 @@ import org.example.repositories.ProjectRepository;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+@Path("/employees")
 public class EmployeeController {
     private EmployeeRepository employeeRepository;
     private ProjectRepository projectRepository;
 
     public EmployeeController(){
         employeeRepository = new EmployeeRepository();
-        //projectRepository = new ProjectRepository();
+        projectRepository = new ProjectRepository();
     }
 
     @GET
-    @Path("hello")
+    @Path("/hello")
     public String testAPI(){
         return "Hello JAX-RS";
     }
 
     @GET
-    @Path("get")
+    @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Employee> getEmployees(){
-        return employeeRepository.selectAll();
+    public Response getEmployees(){
+        List<Employee> employees = employeeRepository.selectAll();
+        return Response.ok(employees).build();
     }
 
-    @GET @Path("add/{name}")
-    public List<Employee> getEmployeesByProject(@PathParam("name") String projectName){
+    @GET
+    @Path("/in/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getEmployeesByProject(@PathParam("name") String projectName){
         Project project = projectRepository.getProjectByName(projectName);
-        return new ArrayList<>(project.getEmployees());
+        return Response.ok(project.getEmployees()).build();
     }
 
     @PUT
     @Path("/project/{projectID}/add/{employeeID}")
-    public Project addEmployeeToProject(
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addEmployeeToProject(
             @PathParam("projectID") int projectID,
             @PathParam("employeeID") int employeeID
     ){
         Project project = projectRepository.findByID(projectID);
         Employee employee = employeeRepository.findByID(employeeID);
         project.addEmployee(employee);
-        return projectRepository.save(project);
+        projectRepository.save(project);
+        return Response.ok(project.getEmployees()).build();
     }
 }
