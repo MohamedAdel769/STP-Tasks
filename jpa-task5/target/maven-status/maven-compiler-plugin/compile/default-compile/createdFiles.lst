@@ -1,7 +1,7 @@
 org\example\entities\Project.class
-org\example\repositories\EmployeeRepository.class
-org\example\repositories\ProjectRepository.class
 org\example\entities\Employee.class
 org\example\entities\Role.class
+org\example\services\ProjectService.class
+org\example\services\EmployeeService.class
 org\example\App.class
 org\example\controllers\EmployeeController.class
