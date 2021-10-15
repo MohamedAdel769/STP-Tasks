@@ -3,6 +3,7 @@ package org.example.services;
 import org.example.entities.Employee;
 import org.example.entities.Project;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -10,21 +11,23 @@ import javax.persistence.Query;
 import java.util.Set;
 
 public class ProjectService {
+    @Inject
+    private EntityManager entityManager;
 
-    public Project getProjectByName(String projectName){
-        EntityManager entityManager = getEntityManager();
-        Query query = entityManager.createQuery("SELECT p FROM Project p WHERE p.projectName = :projectName");
-        query.setParameter("projectName", projectName);
-        return (Project) query.getSingleResult();
+    public ProjectService(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     public Set<Employee> getEmployees(String projectName){
-        Project project = getProjectByName(projectName);
+        //EntityManager entityManager = getEntityManager();
+        Query query = entityManager.createQuery("SELECT p FROM Project p WHERE p.projectName = :projectName");
+        query.setParameter("projectName", projectName);
+        Project project = (Project) query.getSingleResult();
         return project.getEmployees();
     }
 
     public Project addEmployeeToProject(Employee employee, int projectID){
-        EntityManager entityManager = getEntityManager();
+        //EntityManager entityManager = getEntityManager();
         entityManager.getTransaction().begin();
 
         Project project = entityManager.find(Project.class, projectID);
@@ -33,10 +36,5 @@ public class ProjectService {
         entityManager.persist(project);
         entityManager.getTransaction().commit();
         return project;
-    }
-
-    public EntityManager getEntityManager(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("org.example.entities");
-        return emf.createEntityManager();
     }
 }

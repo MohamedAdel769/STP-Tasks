@@ -36,6 +36,13 @@ public class Employee {
     @ManyToMany
     private Set<Project> projectSet = new HashSet<>();
 
+    public Employee(int id, String fullName, String email, short age) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.age = age;
+    }
+
     public Set<Project> getProjectSet() {
         return projectSet;
     }
@@ -66,8 +73,7 @@ public class Employee {
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", age=" + age +
-                ", role=" + role + '}';
+                ", age=" + age ;
     }
 
 //    public List<Project> getManagedProjects() {

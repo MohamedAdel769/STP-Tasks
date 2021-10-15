@@ -32,6 +32,11 @@ public class Project {
     )
     private Set<Employee> employees = new HashSet<>();
 
+    public Project(int id, String projectName) {
+        this.id = id;
+        this.projectName = projectName;
+    }
+
     public void addEmployee(Employee employee){
         employees.add(employee);
     }
