@@ -16,9 +16,13 @@ public class EmployeeService{
         this.entityManager = entityManager;
     }
 
-    public Employee findByID(int id){
+    public Employee findByID(int id) throws Exception {
         //EntityManager entityManager = getEntityManager();
-        return entityManager.find(Employee.class, id);
+        Employee employee = entityManager.find(Employee.class, id);
+        if(employee == null)
+            throw new Exception("Employee not found");
+        else
+            return employee;
     }
 
     public List<Employee> selectAll(){

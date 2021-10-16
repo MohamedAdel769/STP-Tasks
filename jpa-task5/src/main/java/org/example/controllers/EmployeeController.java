@@ -7,6 +7,7 @@ import org.example.services.EmployeeService;
 import org.example.services.EntityFactoryService;
 import org.example.services.ProjectService;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,19 +15,28 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Set;
 
 @Path("/employees")
 public class EmployeeController {
-    private final EmployeeService employeeService = new EmployeeService(EntityFactoryService.getEntityManager());
-    private final ProjectService projectService = new ProjectService(EntityFactoryService.getEntityManager());
+    @Inject
+    private EmployeeService employeeService;
+
+    @Inject
+    private ProjectService projectService;
 
     @POST
     @Path("/page")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response paginate(Page page){
-        List<Employee> employees = employeeService.selectAllPage(page.getPageIndex(), page.getPageSize());
-        return Response.ok(employees).build();
+        try {
+            List<Employee> employees = employeeService.selectAllPage(page.getPageIndex(), page.getPageSize());
+            return Response.ok(employees).build();
+        }
+        catch (Exception e) {
+            return Response.status(404).build();
+        }
     }
 
     @GET
@@ -40,7 +50,13 @@ public class EmployeeController {
     @Path("/in/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getEmployeesByProject(@PathParam("name") String projectName){
-        return Response.ok(projectService.getEmployees(projectName)).build();
+        try{
+            Set<Employee> employeeSet = projectService.getEmployees(projectName);
+            return Response.ok(employeeSet).build();
+        }
+        catch (Exception e){
+            return Response.status(404).build();
+        }
     }
 
     @PUT
@@ -50,8 +66,13 @@ public class EmployeeController {
             @PathParam("projectID") int projectID,
             @PathParam("employeeID") int employeeID
     ){
-        Employee employee = employeeService.findByID(employeeID);
-        return Response.ok(projectService.addEmployeeToProject(employee, projectID)
-                .getEmployees()).build();
+        try {
+            Employee employee = employeeService.findByID(employeeID);
+            return Response.ok(projectService.addEmployeeToProject(employee, projectID)
+                    .getEmployees()).build();
+        }
+        catch (Exception e){
+            return Response.status(404).build();
+        }
     }
 }

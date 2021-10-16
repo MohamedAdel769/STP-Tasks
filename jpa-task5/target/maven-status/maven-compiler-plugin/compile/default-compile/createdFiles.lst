@@ -1,4 +1,5 @@
 org\example\entities\Project.class
+org\example\services\EntityFactoryService.class
 org\example\entities\Employee.class
 org\example\entities\Role.class
 org\example\services\ProjectService.class

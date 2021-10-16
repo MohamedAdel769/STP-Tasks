@@ -4,6 +4,11 @@ public class Page {
     private int pageSize;
     private int pageIndex;
 
+    public Page(int pageSize, int pageIndex) {
+        this.pageSize = pageSize;
+        this.pageIndex = pageIndex;
+    }
+
     public int getPageSize() {
         return pageSize;
     }

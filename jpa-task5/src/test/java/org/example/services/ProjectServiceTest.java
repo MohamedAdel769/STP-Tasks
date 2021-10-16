@@ -43,7 +43,7 @@ class ProjectServiceTest {
     }
 
     @Test
-    void addEmployeeToProject() {
+    void addEmployeeToProject() throws Exception{
         Project dummy = new Project(1, "test project");
         Employee employee = new Employee(1,"test", "ma@gmail.com", (short) 30);
 

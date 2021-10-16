@@ -37,7 +37,7 @@ class EmployeeServiceTest {
 
         @Test
         @DisplayName("When passing existed ID")
-        void findByKnownID() {
+        void findByKnownID() throws Exception{
             Employee dummyEmployee = new Employee(1,"Adel", "ma@gmail.com", (short) 30);
             Mockito.when(em.find(Employee.class, 1)).thenReturn(dummyEmployee);
             assertEquals(dummyEmployee.getFullName(), employeeService.findByID(1).getFullName());
@@ -46,8 +46,7 @@ class EmployeeServiceTest {
         @Test
         @DisplayName("When passing non existed ID")
         void findByUnknownID() {
-            Mockito.when(em.find(any(Class.class), Mockito.anyInt())).thenReturn(null);
-            assertNull(employeeService.findByID(1234));
+            assertThrows(Exception.class, () -> employeeService.findByID(-1));
         }
     }
 
