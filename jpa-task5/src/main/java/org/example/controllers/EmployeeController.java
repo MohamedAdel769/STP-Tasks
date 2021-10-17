@@ -19,11 +19,18 @@ import java.util.Set;
 
 @Path("/employees")
 public class EmployeeController {
-    @Inject
     private EmployeeService employeeService;
-
-    @Inject
     private ProjectService projectService;
+
+    public EmployeeController() {
+        employeeService = new EmployeeService(EntityFactoryService.getEntityManager());
+        projectService = new ProjectService(EntityFactoryService.getEntityManager());
+    }
+
+    public EmployeeController(EmployeeService employeeService, ProjectService projectService) {
+        this.employeeService = employeeService;
+        this.projectService = projectService;
+    }
 
     @POST
     @Path("/page")

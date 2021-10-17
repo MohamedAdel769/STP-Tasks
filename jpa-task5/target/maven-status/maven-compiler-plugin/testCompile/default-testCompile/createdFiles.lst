@@ -1,7 +1,5 @@
 org\example\services\ProjectServiceTest.class
-org\example\controllers\EmployeeControllerTest$paginate.class
-org\example\services\EmployeeServiceTest$FindByID.class
 org\example\controllers\EmployeeControllerTest.class
 org\example\controllers\EmployeeControllerTest$addEmployeeToProject.class
-org\example\controllers\EmployeeControllerTest$getEmployeesByProject.class
+org\example\services\EmployeeServiceTest$FindByID.class
 org\example\services\EmployeeServiceTest.class
